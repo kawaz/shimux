@@ -1,0 +1,13 @@
+{
+  "supported-targets": ["native"],
+  "import": [
+    "moonbitlang/core/builtin",
+    "kawaz/poc3/lib/ffi",
+    "kawaz/poc3/lib/observer"
+  ],
+  "link": {
+    "native": {
+      "cc-link-flags": "-Lffi/target/release -lshimux_ffi"
+    }
+  }
+}

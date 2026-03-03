@@ -1,0 +1,14 @@
+{
+  "is-main": true,
+  "supported-targets": ["native"],
+  "import": [
+    { "path": "kawaz/poc3/lib/agent", "alias": "shimux_agent" },
+    "kawaz/poc3/lib/observer",
+    "kawaz/poc3/lib/ffi"
+  ],
+  "link": {
+    "native": {
+      "cc-link-flags": "-Lffi/target/release -lshimux_ffi"
+    }
+  }
+}
