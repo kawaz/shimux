@@ -1,0 +1,14 @@
+{
+  "is-main": true,
+  "supported-targets": ["native"],
+  "import": [
+    { "path": "kawaz/poc003/lib/ffi", "alias": "ffi" },
+    { "path": "kawaz/poc003/lib/args", "alias": "args" },
+    { "path": "kawaz/poc003/lib/runner", "alias": "runner" }
+  ],
+  "link": {
+    "native": {
+      "cc-link-flags": "-Lffi/target/release -ltty_overlay_ffi"
+    }
+  }
+}

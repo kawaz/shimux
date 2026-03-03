@@ -1,0 +1,6 @@
+{
+  "supported-targets": ["native"],
+  "import": [
+    { "path": "kawaz/poc003/lib/args", "alias": "args" }
+  ]
+}

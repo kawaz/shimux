@@ -1,0 +1,6 @@
+{
+  "supported-targets": ["native"],
+  "import": [
+    "moonbitlang/core/strconv"
+  ]
+}
