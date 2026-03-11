@@ -1,0 +1,70 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "kawaz/shimux/src/core"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+pub(all) suberror TerminalError {
+  TerminalError(String)
+}
+
+// Types and methods
+pub(all) enum FormatVar {
+  SessionName
+  WindowIndex
+  PaneId
+  PanePid
+  PaneCurrentPath
+  PaneWidth
+  PaneHeight
+  PaneActive
+}
+
+pub(all) struct PaneId(String) derive(Eq, @debug.Debug)
+#deprecated
+pub fn PaneId::inner(Self) -> String
+pub impl Show for PaneId
+
+pub(all) struct PaneInfo {
+  id : PaneId
+  name : String
+  cwd : String
+  width : Int
+  height : Int
+  active : Bool
+}
+
+pub(all) struct SessionState {
+  name : String
+  panes : Array[PaneInfo]
+  next_pane_id : Int
+}
+
+pub(all) enum SplitDirection {
+  Horizontal
+  Vertical
+}
+
+// Type aliases
+
+// Traits
+pub(open) trait Terminal {
+  has_session(Self, String) -> Bool raise TerminalError
+  new_session(Self, String, String, String) -> Unit raise TerminalError
+  new_window(Self, String, String) -> PaneId raise TerminalError
+  split_pane(Self, SplitDirection, String, Int) -> PaneId raise TerminalError
+  split_pane_with_command(Self, SplitDirection, Array[String], String, Array[String]) -> PaneId raise TerminalError
+  send_keys(Self, PaneId, String) -> Unit raise TerminalError
+  send_text(Self, PaneId, String) -> Unit raise TerminalError
+  select_pane(Self, PaneId) -> Unit raise TerminalError
+  kill_pane(Self, PaneId) -> Unit raise TerminalError
+  list_panes(Self, String) -> Array[PaneInfo] raise TerminalError
+  display_message(Self, String) -> String raise TerminalError
+  show_option(Self, String) -> String raise TerminalError
+  resize_pane(Self, PaneId, String, Int) -> Unit raise TerminalError
+}
+

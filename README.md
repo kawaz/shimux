@@ -2,18 +2,22 @@
 
 Ghostty 上で Claude Code Agent Teams の tmux モードを動作させる tmux 互換 CLI ラッパー。
 
+Ghostty の AppleScript API を使い、tmux コマンドを Ghostty のペイン操作に変換する。
+
 ## Status
 
-開発初期段階（PoC フェーズ）
+開発初期段階
 
 ## Structure
 
 ```
-docs/           # 設計書・仕様
-poc/
-  poc001-go/            # Go による参照実装 PoC
-  poc002-pty-proxy/     # MoonBit + Rust FFI による PTY Proxy PoC
-  poc003-tty-overlay/   # TTY オーバーレイ描画 PoC（simple/decstbm 方式）
+shim/
+  tmux/             # tmux CLI パース → core API 呼び出し
+terminal/
+  ghostty/          # Ghostty AppleScript バックエンド
+core/               # 抽象 API（Split, SendKeys, Focus 等）
+cmd/
+  shimux/           # エントリーポイント
 ```
 
 ## License

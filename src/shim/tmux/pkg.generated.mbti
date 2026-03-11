@@ -1,0 +1,43 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "kawaz/shimux/src/shim/tmux"
+
+import {
+  "kawaz/shimux/src/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn parse(Array[String]) -> TmuxCommand raise ParseError
+
+pub fn split_direction(Bool) -> @core.SplitDirection
+
+// Errors
+pub(all) suberror ParseError {
+  MissingArgument(String)
+  UnknownCommand(String)
+  EmptyInput
+}
+
+// Types and methods
+pub(all) enum TmuxCommand {
+  Version
+  HasSession(target~ : String)
+  SwitchClient(target~ : String)
+  NewSession(attach_if_exists~ : Bool, detached~ : Bool, session~ : String, cwd~ : String, command~ : Array[String])
+  ShowOptions(global~ : Bool, pane~ : Bool, value_only~ : Bool, target~ : String, name~ : String)
+  SetOption(pane~ : Bool, window~ : Bool, unset~ : Bool, target~ : String, name~ : String, value~ : String)
+  SplitWindow(horizontal~ : Bool, target~ : String, size~ : String, print_info~ : Bool, format~ : String)
+  NewWindow(session~ : String, name~ : String, print_info~ : Bool, format~ : String)
+  SendKeys(target~ : String, keys~ : Array[String])
+  SelectPane(target~ : String, style~ : String, title~ : String)
+  KillPane(target~ : String)
+  ListPanes(format~ : String)
+  DisplayMessage(print~ : Bool, format~ : String)
+  Unknown(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for TmuxCommand
+
+// Type aliases
+
+// Traits
+

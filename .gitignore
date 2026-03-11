@@ -1,0 +1,6 @@
+_build/
+.mooncakes/
+.repos/
+**/ffi/target/
+bisect.coverage
+trace.json

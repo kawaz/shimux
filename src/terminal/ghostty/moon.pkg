@@ -1,0 +1,10 @@
+import {
+  "kawaz/shimux/src/core",
+  "moonbitlang/core/encoding/utf8",
+}
+
+supported_targets = "native"
+
+options(
+  link: { "native": { "cc-link-flags": "-Lffi/target/release -lshimux_ffi" } },
+)
